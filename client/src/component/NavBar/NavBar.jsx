@@ -2,9 +2,9 @@ import react from 'react'
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
+import {getPokemon} from '../../redux/action/index'
 
-
-export default function navBar () {
+export default function NavBar () {
     const dispatch = useDispatch()
     const allPokemon = useSelector((state) => state.pokemons)
     

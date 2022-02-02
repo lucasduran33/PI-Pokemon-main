@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {getPokemon} from '../../redux/action/index'
 import NavBar from '../NavBar/NavBar'
-
+import Cards from '../Cards/Cards'
 
 export default function Home () {
 const dispatch = useDispatch()
@@ -25,6 +25,13 @@ return (
 
     <h1>La pokedex de duran</h1>
    <NavBar/>
+   {
+       allPokemon?.map(el =>{
+           return (
+            <Cards  name={el.name}   sprites={el.sprites} type={el.type}/>
+           )
+       } )
+   }
    </div>
 )
 }
