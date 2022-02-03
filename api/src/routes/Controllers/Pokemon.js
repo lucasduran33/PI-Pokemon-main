@@ -15,8 +15,8 @@ const allPoke =  [...getApi1.data.results, ...getApi2.data.results]
  const pokeData = []
 
  for(i = 0; i <allPoke.length; i++){
-    if(!allPoke[i]) return pokeData;
-
+     console.log('Inicia tu G E T')
+     if(!allPoke[i]) return pokeData;
     if(allPoke[i].url){
        await axios.get(allPoke[i].url)
             .then(response => {
@@ -24,7 +24,7 @@ const allPoke =  [...getApi1.data.results, ...getApi2.data.results]
             })
             .catch(error => {
                 console.log('entro al catch')
-                console.log(error)
+
             })     
             const info = await pokemones.data
             pokeData.push({

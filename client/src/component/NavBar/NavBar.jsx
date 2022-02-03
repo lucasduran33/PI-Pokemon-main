@@ -2,7 +2,7 @@ import react from 'react'
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {getPokemon} from '../../redux/action/index'
+import {getPokemon, filterByOrder, filterByAttack} from '../../redux/action/index'
 import SearchBar from '../SearchBar/SearchBar';
 export default function NavBar () {
     const dispatch = useDispatch()
@@ -18,20 +18,29 @@ export default function NavBar () {
         e.preventDefault();
         dispatch(getPokemon())
     }
+    function handleOrder(e){
+        e.preventDefault();
+        dispatch(filterByOrder(e.target.value))
+    }
+    function handleAttack(e){
+        e.preventDefault();
+        dispatch(filterByAttack(e.target.value))
+    }   
+        
     return (
         <div>
             <SearchBar/>
         <Link to='/'>  <button>Crear pokemon</button>  </Link>
         <button onClick={(e) => handleClick(e)}>Cargar todos los pokemones</button>
         
-        <select>
+        <select onChange={(e) => handleOrder(e)}>
             <option value='asc'>A-Z</option>
             <option value='des'>Z-A</option>
         </select>
-        <select >
-                        <option value='puntuacion'>Puntuacion</option>
-                        <option value='mayorScore'>Mayor Fuerza</option>
-                        <option value='menorScore'>Menor Fuerza</option>
+        <select    onClick={(e) => handleAttack(e)} >
+                        <option value='puntuacion'>Filtro fuerza</option>
+                        <option value='mayorAttack'>Mayor Fuerza</option>
+                        <option value='menorAttack'>Menor Fuerza</option>
         </select>
         
         
