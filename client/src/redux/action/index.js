@@ -38,13 +38,17 @@ export function getPokeId (id) {
         })   
     }
 }
-export function filterByType(payload){
-    console.log(payload)
-    return {
-        type:'FILTER_BY_TYPE',
-        payload
+export function getType(){
+    return async function (dispatch){
+    const response = await axios.get ('http://localhost:3001/types')
+    return dispatch({
+        type:'GET_TYPES',
+        payload: response.data
+    })
     }
 }
+    
+
 export function filterByOrder (payload){
     console.log(payload)
     return {
@@ -57,6 +61,12 @@ export function filterByAttack(payload){
     console.log(payload)
     return {
         type: 'FILTER_BY_ATTACK',
+        payload
+    }
+}
+export function filterByType(payload){
+    return {
+        type:'FILTER_BY_TYPE',
         payload
     }
 }

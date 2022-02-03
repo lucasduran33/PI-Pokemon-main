@@ -2,6 +2,7 @@ const initialState = {
     pokemons: [],
     allPokemons: [],
     pokeDetail:[],
+    typePokemon:[]
 }
 
 export default function rootReducer (state= initialState, action){
@@ -10,8 +11,13 @@ export default function rootReducer (state= initialState, action){
             return {
                 ...state,
                 pokemons: action.payload,
-                
+                allPokemons:action.payload
 
+            }
+        case  'GET_TYPES':
+            return{
+                ...state,
+                typePokemon: action.payload
             }
         case 'GET_NAME_POKEMON':
             return {
@@ -25,7 +31,7 @@ export default function rootReducer (state= initialState, action){
                 }
         case 'FILTER_BY_TYPE':
             const allFilterPoke = state.allPokemons
-            const typeFiltered = action.payload === 'allTypes' ? allFilterPoke : allFilterPoke.filter((el)=> el.diets.includes(action.payload))
+            const typeFiltered = action.payload === 'allTypes' ? allFilterPoke : allFilterPoke.filter((el)=> el.type.includes(action.payload))
             return {
                 ...state,
                 pokemons: typeFiltered
@@ -81,8 +87,7 @@ export default function rootReducer (state= initialState, action){
                     ...state,
                     pokemons: sorrtAttack
                 }
-            
-            
+           
         default :
         return {
             ...state,

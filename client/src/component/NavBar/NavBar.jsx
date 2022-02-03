@@ -1,16 +1,18 @@
-import react from 'react'
+import React from 'react'
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {getPokemon, filterByOrder, filterByAttack} from '../../redux/action/index'
+import {getPokemon, filterByOrder, filterByAttack, getType, filterByType} from '../../redux/action/index'
 import SearchBar from '../SearchBar/SearchBar';
-export default function NavBar () {
+export default function NavBar ({setCurrentPage , setOrder}) {
     const dispatch = useDispatch()
    
+    const allTypes = useSelector((state) => state.typePokemon)
     
     
     useEffect(() => { 
     dispatch(getPokemon())
+    dispatch(getType())
     },[dispatch])
     
     
@@ -21,11 +23,20 @@ export default function NavBar () {
     function handleOrder(e){
         e.preventDefault();
         dispatch(filterByOrder(e.target.value))
+        setCurrentPage(1);
+        setOrder(`ordenando ${e.target.value}`)
     }
     function handleAttack(e){
         e.preventDefault();
         dispatch(filterByAttack(e.target.value))
+        setCurrentPage(1);
+        setOrder(`ordenando ${e.target.value}`)
     }   
+    function handleFilterType (e){
+        dispatch(filterByType(e.target.value))
+     
+        
+    }
         
     return (
         <div>
@@ -42,7 +53,17 @@ export default function NavBar () {
                         <option value='mayorAttack'>Mayor Fuerza</option>
                         <option value='menorAttack'>Menor Fuerza</option>
         </select>
-        
+        <select onChange={(e) => handleFilterType (e)}>
+
+            <option>Tipos de pokemones</option>
+            {
+                allTypes?.map(el => {
+                    return (
+                        <option key={el.id} name={el.name}>{el.name}</option>
+                        )
+                    })
+                }
+                </select>
         
         <select>
                         <option>Tipo de pokemon</option>
@@ -50,6 +71,9 @@ export default function NavBar () {
                         <option value='Api'>Existentes</option>
                         <option value='baseDatos'>Creados</option>
             
+        </select>
+        <select>
+
         </select>
         </div>
     )

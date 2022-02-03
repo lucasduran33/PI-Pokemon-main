@@ -1,4 +1,4 @@
-import react from 'react'
+import React from 'react'
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
@@ -12,6 +12,7 @@ const dispatch = useDispatch()
 
 const allPokemon = useSelector((state) => state.pokemons)
 const allTypes = useSelector((state) => state.typePokemon)
+const [order, setOrder]= useState('')
 const [currentPage,setCurrentPage]= useState(1)// pagina actual pagina q sigue
 const [pokePerPage, setPokePerPage]= useState(12) //personajes por pagina
 const indexOfLastPoke = currentPage * pokePerPage // 12
@@ -33,7 +34,7 @@ return (
     <div>
 
     <h1>La pokedex de duran</h1>
-   <NavBar/>
+   <NavBar  setCurrentPage={setCurrentPage} setOrder={setOrder}/>
    <Paginado pokePerPage={pokePerPage}  allPokemon={allPokemon.length} paginado={paginado} />
    {
       currentPokemon.map(el =>{
