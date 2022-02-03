@@ -3,10 +3,10 @@ import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {getPokemon} from '../../redux/action/index'
-
+import SearchBar from '../SearchBar/SearchBar';
 export default function NavBar () {
     const dispatch = useDispatch()
-    const allPokemon = useSelector((state) => state.pokemons)
+   
     
     
     useEffect(() => { 
@@ -20,6 +20,7 @@ export default function NavBar () {
     }
     return (
         <div>
+            <SearchBar/>
         <Link to='/'>  <button>Crear pokemon</button>  </Link>
         <button onClick={(e) => handleClick(e)}>Cargar todos los pokemones</button>
         
@@ -32,14 +33,14 @@ export default function NavBar () {
                         <option value='mayorScore'>Mayor Fuerza</option>
                         <option value='menorScore'>Menor Fuerza</option>
         </select>
+        
+        
         <select>
-            <option>Tipo de pokemon</option>
-        </select>
+                        <option>Tipo de pokemon</option>
                         <option value='todos'>Todos</option>
                         <option value='Api'>Existentes</option>
                         <option value='baseDatos'>Creados</option>
-        <select>
-            option
+            
         </select>
         </div>
     )

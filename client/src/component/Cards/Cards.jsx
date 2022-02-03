@@ -5,8 +5,8 @@
      return ( 
         <div>
             <h3>{name}</h3>
-            <h5>{type}</h5>
             <img  src={sprites} alt='image not found'/>
+            <h5>{type}</h5>
         </div>
         
      )

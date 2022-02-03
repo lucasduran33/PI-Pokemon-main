@@ -1,5 +1,6 @@
 const initialState = {
     pokemons: [],
+    namePokemon: [],
 }
 
 export default function rootReducer (state= initialState, action){
@@ -11,5 +12,14 @@ export default function rootReducer (state= initialState, action){
                 
 
             }
+        case 'GET_NAME_POKEMON':
+            return {
+                ...state,
+                namePokemon:action.payload
+            }
+        default :
+        return {
+            ...state,
+        }
     }
 }
