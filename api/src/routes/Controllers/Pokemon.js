@@ -85,6 +85,7 @@ const crearPoke = async (req, res, next) => {
         name,
         types,
         height,
+        weight,
         sprites,
         moves,
         hp,
@@ -97,6 +98,7 @@ const crearPoke = async (req, res, next) => {
 
 let pokeCreated = await Pokemon.create({
     name,
+    weight,
     height,
     sprites,
     moves,

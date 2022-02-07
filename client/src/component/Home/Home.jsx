@@ -39,9 +39,9 @@ return (
    {
       currentPokemon.map(el =>{
            return (
-               <frangment>
-                   <Link to={'Home'}>
-            <Cards  name={el.name}   sprites={el.sprites} type={el.type} key={el.id}/>
+               <frangment key={el.id}>
+                   <Link to={`/home`}>
+            <Cards  name={el.name} id={el.id}  sprites={el.sprites} type={el.type} key={el.id}/>
                    </Link>
                </frangment>
 

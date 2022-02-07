@@ -31,7 +31,7 @@ export function getPokeName (name){
 
 export function getPokeId (id) {
     return async function (dispatch){
-        const response = await axios.get ('http://localhost:3001/pokemons?id=' + id)
+        const response = await axios.get ('http://localhost:3001/pokemons/?id='+ id)
         return dispatch({
             type: 'POKEMON_DETAIL',
             payload: response.data
@@ -40,11 +40,23 @@ export function getPokeId (id) {
 }
 export function getType(){
     return async function (dispatch){
-    const response = await axios.get ('http://localhost:3001/types')
-    return dispatch({
-        type:'GET_TYPES',
-        payload: response.data
-    })
+        try{
+
+            const response = await axios.get ('http://localhost:3001/types')
+            return dispatch({
+                type:'GET_TYPES',
+                payload: response.data
+            })
+        }catch(error){
+            console.log('No trajo la id')
+        }
+        }
+    }
+export function postPokemon (payload){
+    return async function (dispatch){
+        const response = axios.post('http://localhost:3001/pokemons', payload)
+        console.log(response)
+        return response;
     }
 }
     
