@@ -31,10 +31,16 @@ export default function PokemonCreate () {
             types:[...input.types, e.target.value]
         })
     }
+    function handleMove(e){
+        setInput({
+            ...input,
+            moves:[...input.moves, e.target.value]
+        })
+    }
 function handleChange(e){ // <- el que va recolectadno la informacion de los input y seteando en un estado local
     setInput({
         ...input,
-        [e.target.value]: e.target.value
+        [e.target.name]: e.target.value
     })
 }
 function handleSubmit(e) {
@@ -97,7 +103,7 @@ return (
         </div>
         <div>
         <label>Moves</label> 
-           <input type='text' value={input.moves} name='moves' onChange={(e) =>handleChange(e)}/>
+           <input type='text' value={input.moves} name='moves' onChange={(e) => handleMove(e)}/>
         </div>
               <select  onChange={(e) =>handleSelect(e)}>
 

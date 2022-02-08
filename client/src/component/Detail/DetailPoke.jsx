@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {getPokeId} from '../../redux/action/index';
+import {getPokeId, resetId} from '../../redux/action/index';
 import {useDispatch, useSelector, } from 'react-redux'
 import { useParams, Link } from 'react-router-dom';
 
@@ -18,7 +18,8 @@ useEffect(()=>{
     dispatch(getPokeId(id))
 },[dispatch])
 function handleChange (e){
-    dispatch()
+    e.preventDefault()
+    dispatch(resetId())
 }
 
 return (
@@ -39,7 +40,7 @@ return (
             </div>  : <p>Loading...</p>
 }
   <Link to ='/home'>
-      <button>Volver</button>
+      <button onClick={(e) =>handleChange(e)}>Volver</button>
   </Link>
     </div>
 )

@@ -3,7 +3,7 @@ const {Pokemon, Types}= require('../../db')
 
 const getPokemon = async (req, res, next) => {
 
-const name= req.query.name;
+    const name= req.query.name;
 try{
 const getApi1 = await axios.get('https://pokeapi.co/api/v2/pokemon')
 const getApi2= await axios.get(getApi1.data.next)
@@ -13,6 +13,7 @@ const allPoke =  [...getApi1.data.results, ...getApi2.data.results]
 
 
  const pokeData = []
+ 
 
  for(i = 0; i <allPoke.length; i++){
      console.log('Inicia tu G E T')
@@ -48,7 +49,7 @@ const allPoke =  [...getApi1.data.results, ...getApi2.data.results]
 if(!getDB){
     res.send(pokeData)
 }else {
-    totalPokemons.push(...pokeData, ...getDB)
+    totalPokemons.push( ...getDB, ...pokeData)
 }
 
 if(!name){
@@ -69,14 +70,17 @@ if(!name){
 }
 
 
-const BuscarPoke = async (req, res, next) => {
+const BuscarPoke = async (req, res) => {
     const id = req.params.id;
     const pokeTotal = await getPokemon();
 if (id) {
-    let pokeId = await pokeTotal.filter(el => el.id == id);
+   
+    let pokeId = await pokeTotal.filter(el => el.id == id)
+    console.log(pokeId)
     pokeId.length?
     res.status(200).json(pokeId):
     res.status(404).send('Pokemon no encontrado')
+    console.log(pokeId)
 }
 }
 

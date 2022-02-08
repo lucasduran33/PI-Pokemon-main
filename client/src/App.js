@@ -11,7 +11,7 @@ function App() {
       <h1>Henry Pokemon</h1>
     </div>
     <Routes>
-      <Route path={'/'} element={<CreatePokemon/>}/>
+      <Route path={'/createPokemon'} element={<CreatePokemon/>}/>
       <Route path={'/'} element={<Landing/>}/>
       <Route path={'/home'} element={<Home/>}/>
       <Route path={'/pokemons/:id'} element={<DetailPoke/>} />

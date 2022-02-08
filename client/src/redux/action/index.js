@@ -31,7 +31,7 @@ export function getPokeName (name){
 
 export function getPokeId (id) {
     return async function (dispatch){
-        const response = await axios.get ('http://localhost:3001/pokemons/?id='+ id)
+        const response = await axios.get ('http://localhost:3001/pokemons/'+ id)
         return dispatch({
             type: 'POKEMON_DETAIL',
             payload: response.data
@@ -79,6 +79,13 @@ export function filterByAttack(payload){
 export function filterByType(payload){
     return {
         type:'FILTER_BY_TYPE',
+        payload
+    }
+}
+
+export function resetId(payload){
+    return{
+        type:'RESET_ID',
         payload
     }
 }

@@ -41,7 +41,7 @@ export default function NavBar ({setCurrentPage , setOrder}) {
     return (
         <div>
             <SearchBar/>
-        <Link to='/'>  <button>Crear pokemon</button>  </Link>
+        <Link to='/createPokemon'>  <button>Crear pokemon</button>  </Link>
         <button onClick={(e) => handleClick(e)}>Cargar todos los pokemones</button>
         
         <select onChange={(e) => handleOrder(e)}>

@@ -30,6 +30,11 @@ export default function rootReducer (state= initialState, action){
                     ...state,
                     pokeDetail:action.payload
                 }
+        case 'RESET_ID':
+            return {
+                ...state,
+                pokeDetail:[]
+            }
         
         case 'POST_POKEMON':
             return {
