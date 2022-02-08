@@ -5,7 +5,7 @@ import axios from 'axios'
 export function getPokemon (){
     return async function (dispatch){
         let json = await axios.get('http://localhost:3001/pokemons')
-        console.log(json)
+        console.log(`aqui esta el get POKEMON${json}`)
         return dispatch ({
             type: 'GET_POKEMONS',
             payload: json.data
@@ -13,11 +13,12 @@ export function getPokemon (){
     }
 }
 
-export function getPokeName (name){
+export function getPokeName (payload){
     return async function (dispatch){
       try{
-          var json= await axios.get('http://localhost:3001/pokemons?name='+ name)
-            console.log(json)  
+          var json= await axios.get('http://localhost:3001/pokemons?name='+ payload)
+            console.log(`AQUI ESTA EL NAME ${json}`)  
+            console.log(json)
           return dispatch ({
                 type: 'GET_NAME_POKEMON',
                 payload: json.data
@@ -30,14 +31,22 @@ export function getPokeName (name){
 }
 
 export function getPokeId (id) {
+    
     return async function (dispatch){
-        const response = await axios.get ('http://localhost:3001/pokemons/'+ id)
-        return dispatch({
-            type: 'POKEMON_DETAIL',
-            payload: response.data
-        })   
+        try{
+
+            const response = await axios.get ('http://localhost:3001/pokemons/'+ id)
+            console.log(`aqui esta el DETAIL ${response}`)
+            return dispatch({
+                type: 'POKEMON_ID',
+                payload: response.data
+            })   
+       }catch(error){
+           console.log('fallo el id')
+       }
     }
 }
+
 export function getType(){
     return async function (dispatch){
         try{

@@ -1,7 +1,7 @@
  import React from 'react';
 import {Link} from 'react-router-dom'
 
- export default function pokeCard ({name, type, sprites, id}) {
+ export default function  PokeCard ({name, type, sprites, id}) {
      return ( 
         <div>
             <h3>{name}</h3>
@@ -13,3 +13,4 @@ import {Link} from 'react-router-dom'
         </div>
      )
  }
+ 

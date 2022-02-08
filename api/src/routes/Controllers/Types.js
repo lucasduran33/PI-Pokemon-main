@@ -23,19 +23,19 @@ const getTypes = async (req, res, next) => {
 
 const typesDb = await Types.findAll()
 if(typesDb.length < 1 ){
-const total = await axios.get ('https://pokeapi.co/api/v2/type');
+const total = await axios.get('https://pokeapi.co/api/v2/type');
 
 const TypesA = total.data.results.map(e => {
     return {
-        name: e.name,
-        url: e.url
+        name: e.name
+       
     }
 })
 
 TypesA.forEach(e =>{
     Types.findOrCreate({
         where:{name: e.name,
-        url:e.url }
+        }
     })
 })
 console.log('se cargaron los types')

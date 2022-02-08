@@ -1,7 +1,7 @@
 const initialState = {
     pokemons: [],
     allPokemons: [],
-    pokeDetail:[],
+    detail:[],
     setPokeDetai:[],
     typePokemon:[]
 }
@@ -12,7 +12,7 @@ export default function rootReducer (state= initialState, action){
             return {
                 ...state,
                 pokemons: action.payload,
-                allPokemons:action.payload
+            
 
             }
         case  'GET_TYPES':
@@ -25,15 +25,15 @@ export default function rootReducer (state= initialState, action){
                 ...state,
                 pokemons:action.payload
             }
-        case  'POKEMON_DETAIL':
+        case  'POKEMON_ID':
                 return {
                     ...state,
-                    pokeDetail:action.payload
+                    detail:action.payload
                 }
         case 'RESET_ID':
             return {
                 ...state,
-                pokeDetail:[]
+                detail: []
             }
         
         case 'POST_POKEMON':
