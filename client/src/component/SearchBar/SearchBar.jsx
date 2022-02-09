@@ -16,6 +16,7 @@ export default function SearchBar (){
     function handleSubmit(e){
         e.preventDefault(e)
         dispatch(getPokeName(name))
+        console.log(`aqui esta el submit ${name}`)
     }
 
 

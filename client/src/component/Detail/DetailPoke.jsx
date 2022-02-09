@@ -1,11 +1,11 @@
 import React from 'react';
-import  useEffect from 'react';
+import  {useEffect} from 'react';
 import {getPokeId} from '../../redux/action/index';
 import {useDispatch, useSelector } from 'react-redux'
 import { useParams, Link } from 'react-router-dom';
 
 
-export default function DetailPoke() {
+export default function DetailPoke(props) {
   
 const dispatch = useDispatch();
 const pokemonDetail = useSelector((state) => state.detail)
@@ -16,43 +16,37 @@ console.log(pokemonDetail)
 
 const {id} = useParams()
 
+console.log(`el id x fuera es ${id}`);
 
-useEffect(() => {
-    console.log('LLEGA A POKEID');
-    dispatch(getPokeId(id));
-    console.log(`el id es ${id}`);
-  
-},[dispatch, id])
-console.log(`el id es ${id}`);
+
+useEffect(()=> {
+    dispatch(getPokeId(id))
+},[dispatch,id])
+
 
 
 return (
     <div>
-        {
+        
             
             <div>
 
-                {/* <h2>{pokemonDetail[0].id}</h2> */}
-                <h1>{pokemonDetail[0].name}</h1>
-                {/* <img src={pokemonDetail[0].sprites} alt='img not found'/> */}
-                {/* <h4>{
-
-                pokemonDetail[0].type?.map((e) =>{
-                    return (
-                        <p>{e}</p>
-                    )
-                })
+                 <h2>{pokemonDetail.id}</h2> 
+                <h1>{pokemonDetail.name}</h1>
+                <img src={pokemonDetail.sprites} alt='img not found'/> 
+                 <h4>{
+                     pokemonDetail.type ? pokemonDetail.type :  pokemonDetail.types
                 
                 }</h4>
-                <h2>{pokemonDetail[0].hp}</h2>
-                <h2>{pokemonDetail[0].attack}</h2>
-                <h2>{pokemonDetail[0].defense}</h2>
-                <h2>{pokemonDetail[0].speed}</h2>
-                <h2>{pokemonDetail[0].weight}</h2>
-                <h2>{pokemonDetail[0].height}</h2>
-                 */}
+                <h2>{pokemonDetail.hp}</h2>
+                <h2>{pokemonDetail.attack}</h2>
+                <h2>{pokemonDetail.defense}</h2>
+                <h2>{pokemonDetail.speed}</h2>
+                <h2>{pokemonDetail.weight}</h2>
+                <h2>{pokemonDetail.height}</h2>
+                 
             </div> 
-}
+
   <Link to ='/home'>
       <button>Volver</button>
   </Link>

@@ -12,80 +12,82 @@ function validarNumero(parametro){
 }
 
 function validate(input){
-    let errors = {};
+    let error = {};
     if(!input.name){
-        errors.name = 'Se requiere un nombre'
+        error.name = 'Se requiere un nombre'
     }else if (!input.moves){
-        errors.move= 'Se requiere un Mov'
+        error.move= 'Se requiere un Mov'
     }
     else if (!input.attack  ){
-        errors.attack = 'Se requiere un numero'
+        error.attack = 'Se requiere un numero'
     } 
-    else if (validarNumero(input.attack)== false){
-        errors.attack = 'El ataque no puede ser una letra'
+    else if (validarNumero(input.attack)=== false){
+        error.attack = 'El ataque no puede ser una letra'
     }
     else if (input.attack > 100 ){
-        errors.attack = 'El ataque no puede ser superior a 100'
+        error.attack = 'El ataque no puede ser superior a 100'
     }else if (input.attack <= 0 ){
-        errors.attack = 'El ataque no puede ser menor a 0'
+        error.attack = 'El ataque no puede ser menor a 0'
     }else if (!input.defense  ){
-        errors.defense = 'Se requiere un numero'
-    } 
-    else if (validarNumero(input.defense)== false){
-        errors.defense = 'La defensa no puede ser una letra'
+        error.defense = 'Se requiere un numero'
+    }
+    else if (validarNumero(input.defense)=== false){
+        error.defense = 'La defensa no puede ser una letra'
     } else if (input.defense > 100 ){
-        errors.defense = 'La defensa no puede ser superior a 100'
+        error.defense = 'La defensa no puede ser superior a 100'
     }
    else if (input.defense <= 0 ){
-        errors.defense = 'La defensa no puede ser menor a 0'
-    }
+        error.defense = 'La defensa no puede ser menor a 0'
+   }
     else if (!input.speed  ){
-        errors.speed = 'Se requiere un numero'
+        error.speed = 'Se requiere un numero'
     } 
-    else if (validarNumero(input.speed)== false){
-        errors.speed = 'La velocidad no puede ser una letra'
+    else if (validarNumero(input.speed)=== false){
+        error.speed = 'La velocidad no puede ser una letra'
     } else if (input.speed > 100 ){
-        errors.speed = 'La velocidad no puede ser superior a 100'
+        error.speed = 'La velocidad no puede ser superior a 100'
     }
     else if (input.speed <= 0 ){
-        errors.speed = 'La velocidad no puede ser menor a 0'
+        error.speed = 'La velocidad no puede ser menor a 0'
     }
     else if (!input.height  ){
-        errors.height = 'Se requiere un numero'
+        error.height = 'Se requiere un numero'
     } 
-    else if (validarNumero(input.height)== false){
-        errors.height = 'La altura no puede ser una letra'
+    else if (validarNumero(input.height)=== false){
+        error.height = 'La altura no puede ser una letra'
     } else if (input.height > 100 ){
-        errors.height = 'La altura no puede ser superior a 100'
+        error.height = 'La altura no puede ser superior a 100'
     }
    else if (input.height <= 0 ){
-        errors.height = 'La altura no puede ser menor a 0'
+        error.height = 'La altura no puede ser menor a 0'
     }
     else if (!input.weight  ){
-        errors.weight = 'Se requiere un numero'
+        error.weight = 'Se requiere un numero'
     } 
-    else if (validarNumero(input.weight)== false){
-        errors.weight = 'El peso no puede ser una letra'
+    else if (validarNumero(input.weight)=== false){
+        error.weight = 'El peso no puede ser una letra'
     } else if (input.weight > 100 ){
-        errors.weight = 'El peso no puede ser superior a 100'
+        error.weight = 'El peso no puede ser superior a 100'
     }
    else if (input.weight <= 0 ){
-        errors.weight = 'El peso no puede ser menor a 0'
+        error.weight = 'El peso no puede ser menor a 0'
     }
     else if (!input.hp ){ 
-        errors.hp = 'Se requiere un numero'
+        error.hp = 'Se requiere un numero'
     } 
-    else if (validarNumero(input.hp)== false){
-        errors.hp = 'La vida no puede ser una letra'
+    else if (validarNumero(input.hp)=== false){
+        error.hp = 'La vida no puede ser una letra'
     } else if (input.hp > 100 ){
-        errors.hp = 'La vida no puede ser superior a 100'
+        error.hp = 'La vida no puede ser superior a 100'
     }
    else if (input.hp <= 0 ){
-        errors.hp = 'La vida no puede ser menor a 0'
+        error.hp = 'La vida no puede ser menor a 0'
     }
-    else if (!input.moves)
+    else if (!input.moves){
+        error.moves = 'Movimiento requerido'
+    }
     
-    return errors;
+    return error;
 }
 
 
@@ -94,6 +96,7 @@ export default function PokemonCreate () {
    
     const typesState = useSelector((state)=> state.typePokemon)
     const [error, setError] = useState({});
+   
     const [input,setInput] = useState({
         name:"",
         types:[],
@@ -152,6 +155,7 @@ function handleSubmit(e) {
      })
 }
 
+
 return (
     <div>
         <div>
@@ -165,7 +169,7 @@ return (
        
         <div>
         <label>Nombre</label>
-        <input type='text' value={input.name} name='name' onChange={(e) =>handleChange(e)}/>
+        <input type='text'  value={input.name} name='name' onChange={(e) =>handleChange(e)}/>
         {
             error.name && (<p>{error.name}</p>)
         }
@@ -173,21 +177,21 @@ return (
         </div>
         <div>
            <label>Ataque</label> 
-           <input type='text' value={input.attack} name='attack' onChange={(e) =>handleChange(e)}/>
+           <input type='number' min="1" value={input.attack} name='attack' onChange={(e) =>handleChange(e)}/>
             {
                 error.attack && (<p>{error.attack}</p>)
             }
         </div>
         <div>
            <label>Defensa</label> 
-           <input type='text' value={input.defense} name='defense' onChange={(e) =>handleChange(e)}/>
+           <input type='number' min="1" value={input.defense} name='defense' onChange={(e) =>handleChange(e)}/>
            {
                 error.defense && (<p>{error.defense}</p>)
             }
         </div>
         <div>
            <label>Velocidad</label> 
-           <input type='text' value={input.speed} name='speed' onChange={(e) =>handleChange(e)}/>
+           <input type='number' min="1" value={input.speed} name='speed' onChange={(e) =>handleChange(e)}/>
            {
                 error.speed && (<p>{error.speed}</p>)
             }
@@ -195,21 +199,21 @@ return (
         </div>
         <div>
            <label>Altura</label> 
-           <input type='text' value={input.height} name='height' onChange={(e) =>handleChange(e)}/>
+           <input type='number'min="1" value={input.height} name='height' onChange={(e) =>handleChange(e)}/>
        {
            error.height && (<p>{error.height}</p>)
        }
         </div>
         <div>
            <label>Peso</label> 
-           <input type='text' value={input.weight} name='weight' onChange={(e) =>handleChange(e)}/>
+           <input type='number'min="1" value={input.weight} name='weight' onChange={(e) =>handleChange(e)}/>
          {
              error.weight && (<p>{error.weight}</p>)
          }
         </div>
         <div>
            <label>Vida</label> 
-          <input type='text' value={input.hp} name='hp' onChange={(e) =>handleChange(e)}/>
+          <input type='number' min="1" value={input.hp} name='hp' onChange={(e) =>handleChange(e)}/>
                 {
                     error.hp && (<p>{error.hp}</p>)
                 } 
@@ -227,9 +231,9 @@ return (
             ))
         }
         </select>
-        <ul><li>{input.types.map(el => el + ' ,')}</li></ul> 
+        <ul ><li  >{input.types.map(el => el + ' ,')}</li></ul> 
        <div>
-                <button type='submit' >Crear receta</button>
+                <button type='submit' >Crear Pokemon</button>
        </div>
 
 

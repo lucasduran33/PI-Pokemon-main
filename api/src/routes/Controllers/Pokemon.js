@@ -64,7 +64,7 @@ const BuscarPoke = async (req, res) => {
     }catch(error){
       try{
         let pokemonAPI = await axios.get(
-            `https://pokeapi.co/api/v2/pokemon/${parseInt(id)}`
+            `https://pokeapi.co/api/v2/pokemon/${id}`
           );
 
     pokemonAPI = getDataID(pokemonAPI);

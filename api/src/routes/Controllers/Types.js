@@ -2,20 +2,7 @@ const { default: axios } = require('axios')
 const {Types} = require ('../../db')
 
 
-const getTypesss = async (req, res , next) => {
-    try{
-        const busqueda = await Types.findAll()
-        if(busqueda){
-            res.send(busqueda)
-        }
-        else{
-            res.json({message:'Error'})
-        }
-            
-    }catch(error){
-        next(error)
-    }
-}
+
 
 
 

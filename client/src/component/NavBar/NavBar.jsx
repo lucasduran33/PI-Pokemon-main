@@ -2,7 +2,7 @@ import React from 'react'
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {getPokemon, filterByOrder, filterByAttack, getType, filterByType} from '../../redux/action/index'
+import {getPokemon, filterByOrder, filterByAttack, getType, filterByType, filterByDb} from '../../redux/action/index'
 import SearchBar from '../SearchBar/SearchBar';
 export default function NavBar ({setCurrentPage , setOrder}) {
     const dispatch = useDispatch()
@@ -37,6 +37,9 @@ export default function NavBar ({setCurrentPage , setOrder}) {
      
         
     }
+    function handleCreated(e){
+        dispatch(filterByDb(e.target.value))
+    }
         
     return (
         <div>
@@ -65,16 +68,14 @@ export default function NavBar ({setCurrentPage , setOrder}) {
                 }
                 </select>
         
-        <select>
+        <select  onChange={(e)=> handleCreated(e)}>
                         <option>Tipo de pokemon</option>
-                        <option value='todos'>Todos</option>
-                        <option value='Api'>Existentes</option>
-                        <option value='baseDatos'>Creados</option>
+                        <option value='api'>Existentes</option>
+                        <option value='created'>Creados</option>
+                        
             
         </select>
-        <select>
-
-        </select>
+        
         </div>
     )
 }

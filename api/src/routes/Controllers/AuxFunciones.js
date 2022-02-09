@@ -29,7 +29,7 @@ const axios = require('axios')
       height: pokeinf.data.height,
       weight: pokeinf.data.weight,
       moves: pokeinf.data.moves.map((m)=> m.move.name),
-      sprites:pokeinf.data.sprites.versions['generation-v']["black-white"].animated.front_default,
+      sprites: pokeinf.data.sprites.other.dream_world.front_default, //pokeinf.data.sprites.versions['generation-v']["black-white"].animated.front_default,
       type: pokeinf.data.types.map((e) => e.type.name),
     };
   }

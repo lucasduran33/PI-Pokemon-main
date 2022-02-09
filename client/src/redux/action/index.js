@@ -24,14 +24,14 @@ export function getPokeName (payload){
                 payload: json.data
             })
         }catch(error){
-            console.log('ERROR')   
+            console.log(`ERROR DEL POKE NAME ${error}`)   
         }
 
     }
 }
 
+
 export function getPokeId (id) {
-    
     return async function (dispatch){
         try{
 
@@ -90,6 +90,12 @@ export function filterByType(payload){
         type:'FILTER_BY_TYPE',
         payload
     }
+}
+export function filterByDb(created){
+    return {
+        type: 'FILTER_CREATED',
+        payload:created
+    };
 }
 
 export function resetId(payload){

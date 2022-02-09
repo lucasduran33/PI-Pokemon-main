@@ -12,7 +12,7 @@ export default function rootReducer (state= initialState, action){
             return {
                 ...state,
                 pokemons: action.payload,
-            
+                allPokemons: action.payload
 
             }
         case  'GET_TYPES':
@@ -97,6 +97,18 @@ export default function rootReducer (state= initialState, action){
             return {
                     ...state,
                     pokemons: sorrtAttack
+                }
+            case 'FILTER_CREATED': 
+                const allPoke = state.allPokemons
+                let createdFilter= []
+                if(action.payload === 'created'){
+                    createdFilter = allPoke.filter((poke)=> poke.createdInDB)
+                }else if(action.payload === 'api'){
+                    createdFilter = allPoke.filter((poke)=> !poke.createdInDB)
+                }
+                return {
+                    ...state,
+                    pokemons: createdFilter
                 }
            
         default :

@@ -24,8 +24,8 @@ const paginado = (pageNumber) => {
 }
 
 useEffect(() => { 
+    dispatch(getPokemon())
     console.log('llega el pokemon')
-dispatch(getPokemon())
 },[dispatch])
 
 
@@ -35,13 +35,14 @@ return (
 
     <h1>La pokedex de duran</h1>
    <NavBar  setCurrentPage={setCurrentPage} setOrder={setOrder}/>
+   
    <Paginado pokePerPage={pokePerPage}  allPokemon={allPokemon.length} paginado={paginado} />
    {
       currentPokemon.map(el =>{
            return (
                <div key={el.id}>
                    <Link to={`/home`}>
-            <Cards  name={el.name} id={el.id}  sprites={el.sprites} type={el.type} key={el.id}/>
+            <Cards  name={el.name} id={el.id}  sprites={el.sprites} type={el.type ?el.type : el.types} key={el.id}/>
                    </Link>
                </div>
 
