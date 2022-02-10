@@ -6,6 +6,9 @@ import {getPokemon} from '../../redux/action/index'
 import NavBar from '../NavBar/NavBar'
 import Cards from '../Cards/Cards'
 import Paginado from '../Paginado/Paginado'
+import './Home.css';
+
+
 
 export default function Home () {
 const dispatch = useDispatch()
@@ -36,7 +39,7 @@ return (
     <h1>La pokedex de duran</h1>
    <NavBar  setCurrentPage={setCurrentPage} setOrder={setOrder}/>
    
-   <Paginado pokePerPage={pokePerPage}  allPokemon={allPokemon.length} paginado={paginado} />
+   <Paginado pokePerPage={pokePerPage}  allPokemon={allPokemon.length} paginado={paginado} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
    {
       currentPokemon.map(el =>{
            return (
