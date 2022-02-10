@@ -6,6 +6,7 @@ export function getPokemon (){
     return async function (dispatch){
         let json = await axios.get('http://localhost:3001/pokemons')
         console.log(`aqui esta el get POKEMON${json}`)
+        console.log(json)
         return dispatch ({
             type: 'GET_POKEMONS',
             payload: json.data
@@ -31,21 +32,12 @@ export function getPokeName (payload){
 }
 
 
-export function getPokeId (id) {
-    return async function (dispatch){
-        try{
+// export const getPokeId = (id)=> dispatch => {
+//     return fetch(`http://localhost:3001/pokemons/${id}`)
+//     .then(r => r.json())
+//     .then(houseId=>dispatch({type:'POKEMON_ID', payload:houseId}))
+// };
 
-            const response = await axios.get ('http://localhost:3001/pokemons/'+ id)
-            console.log(`aqui esta el DETAIL ${response}`)
-            return dispatch({
-                type: 'POKEMON_ID',
-                payload: response.data
-            })   
-       }catch(error){
-           console.log('fallo el id')
-       }
-    }
-}
 
 export function getType(){
     return async function (dispatch){

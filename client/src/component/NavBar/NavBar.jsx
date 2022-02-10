@@ -34,7 +34,7 @@ export default function NavBar ({setCurrentPage , setOrder}) {
     }   
     function handleFilterType (e){
         dispatch(filterByType(e.target.value))
-     
+        console.log(e.target.value)
         
     }
     function handleCreated(e){
@@ -53,11 +53,11 @@ export default function NavBar ({setCurrentPage , setOrder}) {
         </select>
         <select    onClick={(e) => handleAttack(e)} >
                         <option value='puntuacion'>Filtro fuerza</option>
-                        <option value='mayorAttack'>Mayor Fuerza</option>
-                        <option value='menorAttack'>Menor Fuerza</option>
+                        <option value='mayorAttack'>Menor Fuerza</option>
+                        <option value='menorAttack'>Mayor Fuerza</option>
         </select>
         <select onChange={(e) => handleFilterType (e)}>
-
+              
             <option>Tipos de pokemones</option>
             {
                 allTypes?.map(el => {

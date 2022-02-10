@@ -26,6 +26,7 @@ export default function rootReducer (state= initialState, action){
                 pokemons:action.payload
             }
         case  'POKEMON_ID':
+            console.log(action.payload)
                 return {
                     ...state,
                     detail:action.payload
@@ -40,13 +41,15 @@ export default function rootReducer (state= initialState, action){
             return {
                 ...state
             }
-        case 'FILTER_BY_TYPE':
+     
+            case 'FILTER_BY_TYPE':
             const allFilterPoke = state.allPokemons
             const typeFiltered = action.payload === 'allTypes' ? allFilterPoke : allFilterPoke.filter((el)=> el.type.includes(action.payload))
             return {
                 ...state,
                 pokemons: typeFiltered
-            }    
+            }
+      
         case 'FILTER_BY_ORDER':
             let sortName = action.payload ==='asc'?
             state.pokemons.sort(function (a,b){

@@ -26,14 +26,16 @@ const getPokemon = async (req, res) => {
                     ...pokeDb.dataValues,
                     types: getNamesByTypes(pokeDb)
                 };
-                return res.send(pokeDb)
+                let pokeDbArray = [pokeDb]
+                return res.send(pokeDbArray)
             }else {
     
                 let pokeAPI = await axios.get(
                     `https://pokeapi.co/api/v2/pokemon/${pokeName}`
                     );
                     pokeAPI= getPokemonData(pokeAPI);
-                    return res.send(pokeAPI);
+                    let pokeArray = [pokeAPI] 
+                    return res.send(pokeArray);
                 }
             }
         }catch(error){
@@ -55,26 +57,33 @@ const getPokemon = async (req, res) => {
 
 
 const BuscarPoke = async (req, res) => {
+    try{
     const id = req.params.id;
-   
-     
- try{
-     let pokemonDB = await Pokemon.findOne({where: {id}, include:Types})
-     pokemonDB = {...pokemonDB.dataValues, types: getNamesByTypes(pokemonDB)}
-    }catch(error){
-      try{
-        let pokemonAPI = await axios.get(
-            `https://pokeapi.co/api/v2/pokemon/${id}`
+    const pokemonDb = await getDbInfo()
+     if(id.length > 2){
+       let pokemonDbid = await pokemonDb.filter(e => e.id == id )
+       pokemonDbid.length? 
+       res.status(200).json(pokemonDbid) :
+       res.status(404).send('pokemon no encontrado')
+       console.log(pokemonDbid)
+     }else{
+         let pokemonAPI = await axios.get(
+             `https://pokeapi.co/api/v2/pokemon/${id}`
           );
 
-    pokemonAPI = getDataID(pokemonAPI);
-    return res.send(pokemonAPI)       
+          pokemonAPI = getDataID(pokemonAPI);
+          return res.send(pokemonAPI)       
+          
+         }
+         return res.status(404).send(error)
+     }catch(error){
+     }
+ }
 
-      }catch(error){
-          return res.status(404).send(error)
-      }
-    }
-}
+
+        
+   
+
 
 
 

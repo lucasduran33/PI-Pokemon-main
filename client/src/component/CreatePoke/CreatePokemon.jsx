@@ -1,4 +1,5 @@
-import { useEffect , useState} from "react";
+import React from "react";
+import { useEffect , useState, useMemo} from "react";
 import { Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import { postPokemon, getType } from '../../redux/action/index';
@@ -15,75 +16,77 @@ function validate(input){
     let error = {};
     if(!input.name){
         error.name = 'Se requiere un nombre'
-    }else if (!input.moves){
+    } if (!input.moves){
         error.move= 'Se requiere un Mov'
-    }
-    else if (!input.attack  ){
+    } if (!input.sprites){
+        error.sprites = 'Campo opcional'
+    } 
+     if (!input.attack  ){
         error.attack = 'Se requiere un numero'
     } 
-    else if (validarNumero(input.attack)=== false){
+     if (validarNumero(input.attack)=== false){
         error.attack = 'El ataque no puede ser una letra'
     }
-    else if (input.attack > 100 ){
+     if (input.attack > 99 ){
         error.attack = 'El ataque no puede ser superior a 100'
-    }else if (input.attack <= 0 ){
+    } if (input.attack <= 0 ){
         error.attack = 'El ataque no puede ser menor a 0'
-    }else if (!input.defense  ){
+    } if (!input.defense  ){
         error.defense = 'Se requiere un numero'
     }
-    else if (validarNumero(input.defense)=== false){
+     if (validarNumero(input.defense)=== false){
         error.defense = 'La defensa no puede ser una letra'
-    } else if (input.defense > 100 ){
+    }  if (input.defense > 100 ){
         error.defense = 'La defensa no puede ser superior a 100'
     }
-   else if (input.defense <= 0 ){
+    if (input.defense <= 0 ){
         error.defense = 'La defensa no puede ser menor a 0'
    }
-    else if (!input.speed  ){
+     if (!input.speed  ){
         error.speed = 'Se requiere un numero'
     } 
-    else if (validarNumero(input.speed)=== false){
+     if (validarNumero(input.speed)=== false){
         error.speed = 'La velocidad no puede ser una letra'
-    } else if (input.speed > 100 ){
+    }  if (input.speed > 100 ){
         error.speed = 'La velocidad no puede ser superior a 100'
     }
-    else if (input.speed <= 0 ){
+     if (input.speed <= 0 ){
         error.speed = 'La velocidad no puede ser menor a 0'
     }
-    else if (!input.height  ){
+     if (!input.height  ){
         error.height = 'Se requiere un numero'
     } 
-    else if (validarNumero(input.height)=== false){
+     if (validarNumero(input.height)=== false){
         error.height = 'La altura no puede ser una letra'
-    } else if (input.height > 100 ){
+    }  if (input.height > 100 ){
         error.height = 'La altura no puede ser superior a 100'
     }
-   else if (input.height <= 0 ){
+    if (input.height <= 0 ){
         error.height = 'La altura no puede ser menor a 0'
     }
-    else if (!input.weight  ){
+     if (!input.weight  ){
         error.weight = 'Se requiere un numero'
     } 
-    else if (validarNumero(input.weight)=== false){
+     if (validarNumero(input.weight)=== false){
         error.weight = 'El peso no puede ser una letra'
-    } else if (input.weight > 100 ){
+    }  if (input.weight > 100 ){
         error.weight = 'El peso no puede ser superior a 100'
     }
-   else if (input.weight <= 0 ){
+    if (input.weight <= 0 ){
         error.weight = 'El peso no puede ser menor a 0'
     }
-    else if (!input.hp ){ 
+     if (!input.hp ){ 
         error.hp = 'Se requiere un numero'
     } 
-    else if (validarNumero(input.hp)=== false){
+     if (validarNumero(input.hp)=== false){
         error.hp = 'La vida no puede ser una letra'
-    } else if (input.hp > 100 ){
+    }  if (input.hp > 100 ){
         error.hp = 'La vida no puede ser superior a 100'
     }
-   else if (input.hp <= 0 ){
+    if (input.hp <= 0 ){
         error.hp = 'La vida no puede ser menor a 0'
     }
-    else if (!input.moves){
+     if (!input.moves){
         error.moves = 'Movimiento requerido'
     }
     
@@ -100,8 +103,8 @@ export default function PokemonCreate () {
     const [input,setInput] = useState({
         name:"",
         types:[],
-        weight:"",
-        height:"",
+        weight:"1",
+        height:"1",
         sprites:"",
         moves:[],
         hp:"",
@@ -119,11 +122,12 @@ export default function PokemonCreate () {
             ...input,
             types:[...input.types, e.target.value]
         })
+        console.log(input.types)
     }
     function handleMove(e){
         setInput({
             ...input,
-            moves:[...input.moves, e.target.value]
+            moves:[e.target.value]
         })
     }
 function handleChange(e){ // <- el que va recolectadno la informacion de los input y seteando en un estado local
@@ -154,7 +158,25 @@ function handleSubmit(e) {
         speed:"",
      })
 }
+const disableSubmit = useMemo(() =>{
+    if(
+        input.name.length > 0 &&
+        input.name.length < 30 &&
+        input.moves.length< 30 &&
+        input.moves.length> 0&&
+        input.weight <= 100 &&
+        input.height <= 100 &&
+        input.hp <= 100 &&
+        input.attack <= 100 &&
+        input.defense <= 100 &&
+        input.speed <= 100 
 
+    ){
+       return false;
+    }else{
+        return true;
+    }
+},[input]);
 
 return (
     <div>
@@ -175,9 +197,10 @@ return (
         }
        
         </div>
+     
         <div>
            <label>Ataque</label> 
-           <input type='number' min="1" value={input.attack} name='attack' onChange={(e) =>handleChange(e)}/>
+           <input type='number' min="1" max="100" value={input.attack} name='attack' onChange={(e) =>handleChange(e)}/>
             {
                 error.attack && (<p>{error.attack}</p>)
             }
@@ -223,17 +246,28 @@ return (
         <label>Moves</label> 
            <input type='text' value={input.moves} name='moves' onChange={(e) => handleMove(e)}/>
         </div>
-              <select  onChange={(e) =>handleSelect(e)}>
+        <div>
+            <label>Imagen</label>
+            <input type='text' value={input.sprites} name='sprites' onChange={(e) =>handleChange(e)} />
+            {
+                error.sprites &&  (<p>{error.sprites}</p>)
 
+                   
+             
+            }
+        </div>
+              <select defaultValue='Tipo poke' onChange={(e) =>handleSelect(e)}>
+                <option disabled value='Tipo poke'>Tipo poke</option>
         {
             typesState.map((el) => (
-                <option value={el.name}>{el.name}</option>
+                <option key={el.id} value={el.name}>{el.name}</option>
             ))
         }
         </select>
         <ul ><li  >{input.types.map(el => el + ' ,')}</li></ul> 
+
        <div>
-                <button type='submit' >Crear Pokemon</button>
+                <button type='submit' disabled={disableSubmit}>Crear Pokemon</button>
        </div>
 
 
