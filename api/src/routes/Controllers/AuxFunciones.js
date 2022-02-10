@@ -12,9 +12,9 @@ const axios = require('axios')
       // speed: pokeinf.data.stats[5].base_stat,
       // height: pokeinf.data.height,
       // weight: pokeinf.data.weight,
-     
       sprites: pokeinf.data.sprites.other.dream_world.front_default,
-      type:pokeinf.data.types.map((e) => e.type.name),
+      types:pokeinf.data.types.map((e) => e.type.name),
+     
     };
   }
 
@@ -28,9 +28,9 @@ const axios = require('axios')
       speed: pokeinf.data.stats[5].base_stat,
       height: pokeinf.data.height,
       weight: pokeinf.data.weight,
-      moves: pokeinf.data.moves.map((m)=> m.move.name),
       sprites: pokeinf.data.sprites.other.dream_world.front_default, //pokeinf.data.sprites.versions['generation-v']["black-white"].animated.front_default,
-      type: pokeinf.data.types.map((e) => e.type.name),
+      types: pokeinf.data.types.map((e) => e.type.name),
+     
     };
   }
 

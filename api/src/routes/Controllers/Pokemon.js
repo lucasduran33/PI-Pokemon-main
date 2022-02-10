@@ -102,7 +102,6 @@ const crearPoke = async (req, res, next) => {
         height,
         weight,
         sprites,
-        moves,
         hp,
         attack,
         defense,
@@ -110,18 +109,19 @@ const crearPoke = async (req, res, next) => {
         createdInDb,
     } = req.body
         
+       
 
 let pokeCreated = await Pokemon.create({
     name,
     weight,
     height,
     sprites,
-    moves,
     hp,
     attack,
     defense,
     speed,
     createdInDb,
+    
    
 })
 let typeDb = await Types.findAll({
@@ -129,9 +129,11 @@ let typeDb = await Types.findAll({
         name: types
     }
 })
+console.log(typeDb)
 pokeCreated.addTypes(typeDb)?
 res.status(200).send('Pokemon creado con exito'):
 res.status(404).send('Error en cargar receta')
+
 console.log(req.body)
 }
 

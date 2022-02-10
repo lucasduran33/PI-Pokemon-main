@@ -16,8 +16,7 @@ function validate(input){
     let error = {};
     if(!input.name){
         error.name = 'Se requiere un nombre'
-    } if (!input.moves){
-        error.move= 'Se requiere un Mov'
+  
     } if (!input.sprites){
         error.sprites = 'Campo opcional'
     } 
@@ -106,11 +105,11 @@ export default function PokemonCreate () {
         weight:"1",
         height:"1",
         sprites:"",
-        moves:[],
         hp:"",
         attack:"",
         defense:"",
         speed:"",
+        
     })
     useEffect(() => {
         dispatch(getType())
@@ -124,12 +123,7 @@ export default function PokemonCreate () {
         })
         console.log(input.types)
     }
-    function handleMove(e){
-        setInput({
-            ...input,
-            moves:[e.target.value]
-        })
-    }
+  
 function handleChange(e){ // <- el que va recolectadno la informacion de los input y seteando en un estado local
     setInput({
         ...input,
@@ -151,25 +145,24 @@ function handleSubmit(e) {
         weight:"",
         height:"",
         sprites:"",
-        moves:[],
         hp:"",
         attack:"",
         defense:"",
         speed:"",
+       
      })
 }
 const disableSubmit = useMemo(() =>{
     if(
         input.name.length > 0 &&
         input.name.length < 30 &&
-        input.moves.length< 30 &&
-        input.moves.length> 0&&
         input.weight <= 100 &&
         input.height <= 100 &&
         input.hp <= 100 &&
         input.attack <= 100 &&
         input.defense <= 100 &&
         input.speed <= 100 
+       
 
     ){
        return false;
@@ -242,10 +235,7 @@ return (
                 } 
         
         </div>
-        <div>
-        <label>Moves</label> 
-           <input type='text' value={input.moves} name='moves' onChange={(e) => handleMove(e)}/>
-        </div>
+      
         <div>
             <label>Imagen</label>
             <input type='text' value={input.sprites} name='sprites' onChange={(e) =>handleChange(e)} />

@@ -48,8 +48,8 @@ return (
                <h1>Vida:  {pokemon.hp ? pokemon.hp :pokemon[0].hp}hp</h1>
                <h1>Tipo de poke: </h1>
                <h3>
-                {     pokemon.type ? pokemon.type.map(el=> el) :  pokemon[0].types.map(el => el + ' ')
-}
+                {  pokemon.types ?  pokemon.types.map(el => el + ' ')  :pokemon[0].types.map(el => el + ' ') }
+
                    </h3>    
                <h1>Ataque: {pokemon.attack ? pokemon.attack :pokemon[0].attack}</h1>
                  <h1>Defensa:  {pokemon.defense ? pokemon.defense :pokemon[0].defense}</h1>

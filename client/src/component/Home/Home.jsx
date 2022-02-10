@@ -42,7 +42,7 @@ return (
            return (
                <div key={el.id}>
                    <Link to={`/home`}>
-            <Cards  name={el.name } id={el.id}  sprites={el.sprites} type={el.type ?el.type : el.types} key={el.id}/>
+            <Cards  name={el.name } id={el.id}  sprites={el.sprites} type={ el.types.map(el => el + ' ')} key={el.id}/>
                    </Link>
                </div>
 

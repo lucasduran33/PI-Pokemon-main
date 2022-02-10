@@ -31,11 +31,8 @@ module.exports = (sequelize) => {
       allowNull:true,
       defaultValue:"https://2.bp.blogspot.com/-Va_nTr_dKSA/XNbCScGn0SI/AAAAAAAAHwE/FMKyp5FfDqseO7IUVPl04I38x7SyKtHwwCLcBGAs/s1600/PokeBall%2BPokemon%2BLogo%2B%255Bwww.blogovector.com%255D.png"
     },
-    moves:{
-      type:DataTypes.ARRAY(DataTypes.STRING),
-      allowNull:true,
-      defaultValue: []
-    },
+    
+    
     hp:{
       type:DataTypes.INTEGER,
       allowNull:false,
