@@ -21,7 +21,7 @@ const getPokemon = async (req, res) => {
                 },
                 include: Types
             });
-            if(pokeDb.length){
+            if(pokeDb){
                 pokeDb ={
                     ...pokeDb.dataValues,
                     types: getNamesByTypes(pokeDb)

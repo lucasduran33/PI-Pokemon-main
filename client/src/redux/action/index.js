@@ -11,18 +11,26 @@ export const getPokemon =() => dispatch => {
 }
 
 
+export const getPokeName=(name) => dispatch =>{
+    return fetch('http://localhost:3001/pokemons?name=' + name)
+    .then(r => r.json())
+    .then(pokename => dispatch({
+        type:'GET_NAME_POKEMON',
+        payload:pokename
+    }))
+}
+
 export function getPokeName (payload){
     return async function (dispatch){
       try{
           var json= await axios.get('http://localhost:3001/pokemons?name='+ payload)
-            console.log(`AQUI ESTA EL NAME ${json}`)  
-            console.log(json)
+          
           return dispatch ({
                 type: 'GET_NAME_POKEMON',
                 payload: json.data
             })
         }catch(error){
-            console.log(`ERROR DEL POKE NAME ${error}`)   
+         error
         }
 
     }
