@@ -1,16 +1,20 @@
 import react from 'react'
 import {Link} from 'react-router-dom'
-import './Landing.css'
+import  './Landing.css'
 
 export default function landing  () {
     return (
-        <div> 
-            <h1>
-                Bienvenidos a la pokedex
-            </h1>
-         <Link to = '/home'>
-             <button>Ir al home</button>
+        <div className='background'> 
+    <div >
+   
+
+    </div>
+      <div className='btncontainer'>
+      <Link to = '/home'>
+             <button className='btnlanding'>Get Pokemons!</button>
          </Link>
+  
+      </div>
         </div>
     )
 }

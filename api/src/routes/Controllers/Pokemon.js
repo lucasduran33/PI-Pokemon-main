@@ -21,7 +21,7 @@ const getPokemon = async (req, res) => {
                 },
                 include: Types
             });
-            if(pokeDb){
+            if(pokeDb.length){
                 pokeDb ={
                     ...pokeDb.dataValues,
                     types: getNamesByTypes(pokeDb)
@@ -35,131 +35,123 @@ const getPokemon = async (req, res) => {
                     );
                     pokeAPI= getPokemonData(pokeAPI);
                     let pokeArray = [pokeAPI] 
-                    return res.send(pokeArray);
+                    if(pokeArray){
+                        return res.send(pokeArray);
+                    }
+                    
                 }
             }
         }catch(error){
             console.log(`Fallo el get ${error}`)
         }
-         
-     }
+        
+    }
     
-        
-        
-        
-
-
-
-
-
-
-
-
-
-const BuscarPoke = async (req, res) => {
-    try{
-    const id = req.params.id;
-    const pokemonDb = await getDbInfo()
-     if(id.length > 2){
-       let pokemonDbid = await pokemonDb.filter(e => e.id == id )
-       pokemonDbid.length? 
-       res.status(200).json(pokemonDbid) :
-       res.status(404).send('pokemon no encontrado')
-       console.log(pokemonDbid)
-     }else{
-         let pokemonAPI = await axios.get(
-             `https://pokeapi.co/api/v2/pokemon/${id}`
-          );
-
-          pokemonAPI = getDataID(pokemonAPI);
-          return res.send(pokemonAPI)       
-          
+    
+    const BuscarPoke = async (req, res) => {
+        try{
+        const id = req.params.id;
+        const pokemonDb = await getDbInfo()
+         if(id.length > 2){
+           let pokemonDbid = await pokemonDb.filter(e => e.id == id )
+           pokemonDbid.length? 
+           res.status(200).json(pokemonDbid) :
+           res.status(404).send('pokemon no encontrado')
+           console.log(pokemonDbid)
+         }else{
+             let pokemonAPI = await axios.get(
+                 `https://pokeapi.co/api/v2/pokemon/${id}`
+              );
+    
+              pokemonAPI = getDataID(pokemonAPI);
+              return res.send(pokemonAPI)       
+              
+             }
+             return res.status(404).send(error)
+         }catch(error){
          }
-         return res.status(404).send(error)
-     }catch(error){
      }
- }
-
-
         
+     
+     const crearPoke = async (req, res, next) => {
+         let  {
+             name,
+             types,
+             height,
+             weight,
+             sprites,
+             hp,
+             attack,
+             defense,
+             speed,
+             createdInDb,
+         } = req.body
+             
+            
+     
+     let pokeCreated = await Pokemon.create({
+         name,
+         weight,
+         height,
+         sprites,
+         hp,
+         attack,
+         defense,
+         speed,
+         createdInDb,
+         
+        
+     })
+     let typeDb = await Types.findAll({
+         where:{
+             name: types
+         }
+     })
+     console.log(typeDb)
+     pokeCreated.addTypes(typeDb)?
+     res.status(200).send('Pokemon creado con exito'):
+     res.status(404).send('Error en cargar pokemon')
+     
+     console.log(req.body)
+     }
+
+
    
-
-
-
-
-
-
-
-
-
-
-
-
-const crearPoke = async (req, res, next) => {
-    let  {
-        name,
-        types,
-        height,
-        weight,
-        sprites,
-        hp,
-        attack,
-        defense,
-        speed,
-        createdInDb,
-    } = req.body
-        
+     
+     module.exports={
+         getPokemon,
+         BuscarPoke,
+         crearPoke,
+        }
        
 
-let pokeCreated = await Pokemon.create({
-    name,
-    weight,
-    height,
-    sprites,
-    hp,
-    attack,
-    defense,
-    speed,
-    createdInDb,
-    
+
+
+
+
+
+
+
+
+        
    
-})
-let typeDb = await Types.findAll({
-    where:{
-        name: types
-    }
-})
-console.log(typeDb)
-pokeCreated.addTypes(typeDb)?
-res.status(200).send('Pokemon creado con exito'):
-res.status(404).send('Error en cargar receta')
-
-console.log(req.body)
-}
 
 
 
 
 
-const deletePoke = async (req, res, next) => {
-const {id} = req.params
 
-Pokemon.destroy({where: {id}})
-.then(() => {
-    return res.send({deleteStatus: 'Pokemon borrado'})
-})
-.catch(err => {
-    res.send({deleteStatus:err })
-    next(err)
-})
-}
 
-module.exports={
-    getPokemon,
-    BuscarPoke,
-    crearPoke,
-    deletePoke
-}
+
+
+
+
+
+
+
+
+
+
 
 
 

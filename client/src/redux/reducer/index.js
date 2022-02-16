@@ -31,11 +31,7 @@ export default function rootReducer (state= initialState, action){
                     ...state,
                     detail:action.payload
                 }
-        case 'RESET_ID':
-            return {
-                ...state,
-                detail: []
-            }
+        
         
         case 'POST_POKEMON':
             return {
@@ -97,6 +93,7 @@ export default function rootReducer (state= initialState, action){
                 }
                 return 0;
             })
+            console.log(`aqui esta el filter attack ${sorrtAttack}`)
             return {
                     ...state,
                     pokemons: sorrtAttack
@@ -113,7 +110,7 @@ export default function rootReducer (state= initialState, action){
                     ...state,
                     pokemons: createdFilter
                 }
-           
+            
         default :
         return {
             ...state,

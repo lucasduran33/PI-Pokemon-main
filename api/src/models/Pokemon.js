@@ -27,9 +27,9 @@ module.exports = (sequelize) => {
       defaultValue:0
     },
     sprites:{
-      type:DataTypes.STRING,
+      type:DataTypes.STRING(5000),
       allowNull:true,
-      defaultValue:"https://2.bp.blogspot.com/-Va_nTr_dKSA/XNbCScGn0SI/AAAAAAAAHwE/FMKyp5FfDqseO7IUVPl04I38x7SyKtHwwCLcBGAs/s1600/PokeBall%2BPokemon%2BLogo%2B%255Bwww.blogovector.com%255D.png"
+      defaultValue:"https://i.pinimg.com/564x/7a/89/9a/7a899ae5a7bf99e40fef753983427222.jpg"
     },
     
     

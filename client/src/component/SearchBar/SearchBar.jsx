@@ -6,7 +6,7 @@ import { getPokeName } from '../../redux/action';
 export default function SearchBar (){ 
     const dispatch = useDispatch()
     const [name, setName]= useState("")
-
+    
     function handleSearch(e){
         e.preventDefault()
         setName(e.target.value)
@@ -15,7 +15,9 @@ export default function SearchBar (){
         
     function handleSubmit(e){
         e.preventDefault(e)
+        
         dispatch(getPokeName(name))
+        setName("")
         console.log(`aqui esta el submit ${name}`)
     }
 

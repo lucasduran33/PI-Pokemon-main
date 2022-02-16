@@ -6,6 +6,7 @@ import {getPokemon} from '../../redux/action/index'
 import NavBar from '../NavBar/NavBar'
 import Cards from '../Cards/Cards'
 import Paginado from '../Paginado/Paginado'
+import Loader from '../Loader/Loader'
 import './Home.css';
 
 
@@ -31,28 +32,38 @@ useEffect(() => {
     console.log('llega el pokemon')
 },[dispatch])
 
-
+const  pokeNull = !currentPokemon.length > 0 ? <Loader/> : null
 
 return (
-    <div>
-
-    <h1>La pokedex de duran</h1>
+    <div className='colors' >
+<div  className='fixed'>
+    
    <NavBar  setCurrentPage={setCurrentPage} setOrder={setOrder}/>
-   
-   <Paginado pokePerPage={pokePerPage}  allPokemon={allPokemon.length} paginado={paginado} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
+        <Paginado pokePerPage={pokePerPage}  allPokemon={allPokemon.length} paginado={paginado} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
+</div>
+
+    {
+        pokeNull 
+    }
+
+ 
+     
+
+<div className='Cardpoke'>
    {
-      currentPokemon.map(el =>{
-           return (
-               <div key={el.id}>
-                   <Link to={`/home`}>
+           currentPokemon.map(el =>{
+               return (
+                   <div key={el.id}>
+                   
             <Cards  name={el.name } id={el.id}  sprites={el.sprites} type={ el.types.map(el => el + ' ')} key={el.id}/>
-                   </Link>
+                
                </div>
 
-           )
-       } )
-   }
-   </div>
+)
+})
+}
+</div>
+</div>
 )
 }
   

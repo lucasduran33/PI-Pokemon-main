@@ -1,0 +1,136 @@
+*{
+  box-sizing: border-box;
+}
+.fondo{
+  background-image: url('../../img/formbackground.jpg');
+}
+.createf{
+    max-width: 500px;
+    min-width: 320px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+  }
+  .poketipi{
+    height: 100% ;
+    padding: 2px;
+    width: 100%;
+    
+  }
+    
+    
+
+  
+  .createpoke{
+    font-size: 40px;
+    margin-top: 0px;
+  }
+ 
+      
+  .datacontainer{
+    width: 100%;
+   background:#383341 ;
+   color: #ffffff;
+   padding: 0 1.5rem;
+  margin-left: auto;
+  margin-right:auto;
+  text-align: center;
+  box-shadow: 0 0 20px 0  rgb(0, 0, 0);
+  }
+  
+  
+  .datacontainer ,form button,
+  .datacontainer, form input,
+  .datacontainer, form label{
+    
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 40px;
+      text-align: center;
+      height: 40%;
+      padding: 10px;
+      margin:8;
+    }
+    .datacontainer, form .entero{
+        grid-column: 1 / 3;
+    }
+    
+    
+      .entero input{
+          width: 100%;
+        }
+    
+        .selector{
+          padding-top: 25px;
+        }
+        form button{
+         position: relative;
+          left:00%;
+justify-content: center;
+          text-align: center;
+          height:80%;
+          width: 100%;
+       background:#5A7DA2;
+       border-radius: 3px;
+       color:#ffffff;
+      
+    } 
+   form select{
+     text-align: center;
+     height: 50%;
+    width: 50%; 
+    margin-top: 2%;
+     margin-bottom: -1%;
+     font-size: 20px
+   }
+
+ 
+
+   .datacontainer h1{ font-size: 3em;}
+   .datacontainer p{
+      color:red;
+      border: 2px #ffffff;
+      border-color: #ffffff;
+      border-radius: 20px;
+  }
+  form input{
+     text-align: center;
+    width: 95%;
+    padding: 5px;
+    border-radius:4px;
+    margin-bottom:15px;
+    border: 4px solid #5A7DA2;
+    font-size: 18px;
+  }
+  .btnsubmit{
+    margin-top: 20px;
+  }
+ .btnsubmit:disabled{
+background: red;
+ }
+ .delete, .telede{
+ 
+  margin-top: 20px;
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content:space-evenly;
+ margin: 20px;
+ 
+font-size: 30px;
+border: 2px;
+}
+
+.telede{
+  
+  margin-left: 10px;
+  padding: 3px;
+  padding-bottom: -3px;
+}
+.telede button:hover{
+  color: red;
+}
+.telede p{
+  border-radius: 2px white;
+
+}
+

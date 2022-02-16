@@ -1,0 +1,55 @@
+.idpoke{
+    height: 200%;
+    width: 100%;
+    border-color: black;
+    background-color: #5A7DA2;
+}
+.loading{
+    position: absolute;
+}
+   
+.btn{
+    position:absolute;
+    right:1%;
+    margin-bottom: 00%;
+    margin-top: -6%;
+    padding-bottom: 9px;
+}
+.pokeimg{
+    position: absolute;
+    right: 7%;
+    height: 500px;
+    margin-top: 32px;
+    padding-bottom: -9px;
+}
+.detalles{
+    font-size: 15px;
+    color:aliceblue;
+    text-align: center;
+    margin-left: 0 ;
+    background-color: #2D2B30;
+    height: 100%;
+    max-width: 500px;
+    min-width: 320px;
+    margin-top: -10px;
+    padding-bottom: 54px;
+    border-radius: 8px;
+    box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.4);
+}
+.title {
+    padding-top: 50px;
+    margin: 0;
+    font-size: 3rem;
+    letter-spacing: 5px;
+} 
+.types{
+    justify-content: center;
+  display: flex;
+} 
+.text{
+    padding-bottom: 5px;
+  
+}
+    
+
+  

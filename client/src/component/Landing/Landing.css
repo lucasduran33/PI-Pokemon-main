@@ -1,0 +1,49 @@
+
+.background{
+
+z-index: -1;
+background-image: url('../../img/thumb-1920-473848.png');
+ 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  margin:0;
+  padding:0;
+}   
+
+    
+.background .title {
+    font-size: 4rem;
+    color: #5A7DA2;
+    position: relative;
+   height: 100%;
+    left: 30%;
+  }
+  .btnlanding{
+    position:absolute;
+    bottom:40%;
+    left:50px;
+    width: 30%;
+    z-index: 3;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--btn-gray);
+    color: hsl(246, 100%, 44%);
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 2rem;
+    transition: 0.4s;
+    box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+  .btnlanding:hover {
+    background-color: #ffffff;
+    color: #685a5a91;
+  }
+ 
+ 
+  
+  

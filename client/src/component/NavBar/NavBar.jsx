@@ -2,8 +2,11 @@ import React from 'react'
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {getPokemon, filterByOrder, filterByAttack, getType, filterByType, filterByDb} from '../../redux/action/index'
+import {getPokemon, filterByOrder, filterByAttack, getType, filterByType, filterByDb, filterByHp, menorHp} from '../../redux/action/index'
 import SearchBar from '../SearchBar/SearchBar';
+import './NavBar.css'
+import logo from '../../img/logo.png'
+
 export default function NavBar ({setCurrentPage , setOrder}) {
     const dispatch = useDispatch()
    
@@ -40,9 +43,17 @@ export default function NavBar ({setCurrentPage , setOrder}) {
     function handleCreated(e){
         dispatch(filterByDb(e.target.value))
     }
+    
+   
+    
         
     return (
-        <div>
+       
+
+                
+        <div className='flex'>
+           
+           <img className='img' src={logo} />
             <SearchBar/>
         <Link to='/createPokemon'>  <button>Crear pokemon</button>  </Link>
         <button onClick={(e) => handleClick(e)}>Cargar todos los pokemones</button>
@@ -51,14 +62,14 @@ export default function NavBar ({setCurrentPage , setOrder}) {
             <option value='asc'>A-Z</option>
             <option value='des'>Z-A</option>
         </select>
-        <select    onClick={(e) => handleAttack(e)} >
-                        <option value='puntuacion'>Filtro fuerza</option>
+        <select defaultValue='Filtro fuerza'   onClick={(e) => handleAttack(e)} >
+                        <option disabled >Filtro fuerza</option>
                         <option value='mayorAttack'>Menor Fuerza</option>
                         <option value='menorAttack'>Mayor Fuerza</option>
         </select>
-        <select onChange={(e) => handleFilterType (e)}>
+        <select defaultValue='Tipo de pokemones' onChange={(e) => handleFilterType (e)}>
               
-            <option>Tipos de pokemones</option>
+            <option disabled >Tipos de pokemones</option>
             {
                 allTypes?.map(el => {
                     return (
@@ -69,14 +80,17 @@ export default function NavBar ({setCurrentPage , setOrder}) {
                 </select>
         
         <select  onChange={(e)=> handleCreated(e)}>
-                        <option>Tipo de pokemon</option>
+                        <option>Api o createdInDb</option>
                         <option value='api'>Existentes</option>
                         <option value='created'>Creados</option>
                         
             
         </select>
-        
+      
+
+            
         </div>
+              
     )
 }
     

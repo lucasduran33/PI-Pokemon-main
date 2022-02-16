@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './Paginado.css'
 
 export default function Paginado ({pokePerPage, allPokemon, paginado, setCurrentPage,currentPage}) { 
 const pageNumbers = []
@@ -13,16 +13,16 @@ function handleNext(){
 setCurrentPage(currentPage + 1)
 }
 return (
-    <nav>
-        <ul>
-        <button disabled={currentPage === pageNumbers[0]? true : false} onClick={(e)=> handlePrev(e) }>Previus</button>
+    <nav className='pagi'>
+        <ul className='but' >
+        <button className='but'  disabled={currentPage === pageNumbers[0]? true : false} onClick={(e)=> handlePrev(e) }>Previus</button>
      
             {pageNumbers && pageNumbers.map(number=>( 
                
-                <button  key={number} onClick={() =>paginado(number)}>{number}</button>
+                <button className='but' key={number} onClick={() =>paginado(number)}>{number}</button>
                 
             ))}
-        <button disabled={currentPage === pageNumbers[pageNumbers.length -1]? true : false} onClick={(e)=> handleNext(e)}>Next</button>
+        <button className='but' disabled={currentPage === pageNumbers[pageNumbers.length -1]? true : false} onClick={(e)=> handleNext(e)}>Next</button>
         </ul>
     </nav>
 )

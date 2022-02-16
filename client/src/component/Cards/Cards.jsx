@@ -1,16 +1,27 @@
  import React from 'react';
 import {Link} from 'react-router-dom'
-
- export default function  PokeCard ({name, type, sprites, id}) {
+import './Cards.css'
+ export default function   PokeCard ({name, type, sprites, id}) {
      return ( 
-        <div>
-            <h3>{name}</h3>
-            <img  src={sprites} alt='image not found'/>
-            <h5>{type}</h5>
-        <Link to={`/pokemons/${id}`}>
-            <button>Mas info</button>
+         <div className='container'>
+
+        <div className='cards'>
+             <Link className='link2' to={`/pokemons/${id}`}>
+                 {
+                  sprites?   
+                     <img  className= 'cardsimg' src={sprites} alt='image not found'/>
+                     :
+                     <img className='cardsimg' src='https://i.pinimg.com/564x/7a/89/9a/7a899ae5a7bf99e40fef753983427222.jpg' alt='image not found'/>
+                     
+                 }
+            <h3 className='nombre'>{name}</h3>
+           
+            <h4 className='tipos'>Tipo:</h4>
+            <p className='tipo'>{type}</p>
+            
             </Link>
         </div>
+         </div>
      )
  }
  

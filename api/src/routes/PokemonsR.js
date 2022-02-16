@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 
-const {getPokemon, BuscarPoke, crearPoke, deletePoke} = require('./Controllers/Pokemon')
+const {getPokemon, BuscarPoke, crearPoke} = require('./Controllers/Pokemon')
 
 
 
@@ -12,6 +12,6 @@ router.get('/:id', BuscarPoke)
 
 router.post('/', crearPoke)
 
-router.delete('/:id', deletePoke)
+
 
 module.exports= router;

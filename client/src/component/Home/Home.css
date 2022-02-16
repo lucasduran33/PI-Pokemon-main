@@ -1,0 +1,25 @@
+Link{
+    text-decoration: none;
+}
+.colors{
+    background-color: #5A7DA2;
+    height: 1700px;
+    margin-bottom: -18px;
+    
+}
+.Cardpoke{
+    
+    position: absolute;
+    margin-top: 9%;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.fixed{
+   
+    margin-top:0%;
+    position: fixed ;
+    z-index: 3;
+    width: 100%;
+}

@@ -1,0 +1,17 @@
+.pagi{
+    display:flex;
+    justify-content: center;
+}
+ 
+
+    
+.but{
+   margin: 0 4px;
+   padding: 5px;
+   font-size: 15px;
+   color: black;
+   border-color:black;
+  cursor: pointer;
+
+}
+ 
