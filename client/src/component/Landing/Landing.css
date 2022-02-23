@@ -1,26 +1,20 @@
 
-.background{
-
+.background img{
+position:absolute;
 z-index: -1;
-background-image: url('../../img/thumb-1920-473848.png');
- 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
-  margin:0;
-  padding:0;
+width: 100%;
+height: 100%;
+margin:0;
+padding:0;
 }   
-
-    
-.background .title {
+/* .background .title {
     font-size: 4rem;
     color: #5A7DA2;
     position: relative;
    height: 100%;
     left: 30%;
-  }
+  } */
+
   .btnlanding{
     position:absolute;
     bottom:40%;
@@ -30,7 +24,7 @@ background-image: url('../../img/thumb-1920-473848.png');
     border: none;
     border-radius: 8px;
     background-color: var(--btn-gray);
-    color: hsl(246, 100%, 44%);
+    color: hsl(69, 100%, 50%)(246, 100%, 44%);
     padding: 10px;
     padding-left: 20px;
     padding-right: 20px;
@@ -44,6 +38,13 @@ background-image: url('../../img/thumb-1920-473848.png');
     color: #685a5a91;
   }
  
+
+
+
+
+
+
+    
  
   
   

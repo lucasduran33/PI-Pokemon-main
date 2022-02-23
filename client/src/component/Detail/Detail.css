@@ -1,8 +1,12 @@
 .idpoke{
+  z-index: -1;
+ 
+  width: 100%;
     height: 200%;
-    width: 100%;
     border-color: black;
     background-color: #5A7DA2;
+
+    
 }
 .loading{
     position: absolute;

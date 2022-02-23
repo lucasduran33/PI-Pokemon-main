@@ -11,14 +11,14 @@ export const getPokemon =() => dispatch => {
 }
 
 
-export const getPokeName=(name) => dispatch =>{
-    return fetch('http://localhost:3001/pokemons?name=' + name)
-    .then(r => r.json())
-    .then(pokename => dispatch({
-        type:'GET_NAME_POKEMON',
-        payload:pokename
-    }))
-}
+// export const getPokeName=(name) => dispatch =>{
+//     return fetch('http://localhost:3001/pokemons?name=' + name)
+//     .then(r => r.json())
+//     .then(pokename => dispatch({
+//         type:'GET_NAME_POKEMON',
+//         payload:pokename
+//     }))
+// }
 
 export function getPokeName (payload){
     return async function (dispatch){
@@ -30,7 +30,7 @@ export function getPokeName (payload){
                 payload: json.data
             })
         }catch(error){
-         error
+         console.log(error)
         }
 
     }
@@ -41,7 +41,8 @@ export function getPokeName (payload){
 //     return fetch(`http://localhost:3001/pokemons/${id}`)
 //     .then(r => r.json())
 //     .then(houseId=>dispatch({type:'POKEMON_ID', payload:houseId}))
-// };
+// };s
+
 export const getType = () => dispatch => {
     return fetch(`http://localhost:3001/types`)
     .then( r => r.json())

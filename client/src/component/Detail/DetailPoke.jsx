@@ -45,7 +45,7 @@ return (
             
          <div   className='detalles'>
               <h1  className='title'>{pokemon.name? pokemon.name :pokemon[0].name}</h1>
-              <h1>pokeID: {pokemon.id ? pokemon.id :pokemon[0].id}</h1>
+            
                  
              
 

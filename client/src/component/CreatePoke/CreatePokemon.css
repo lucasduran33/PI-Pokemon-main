@@ -2,7 +2,12 @@
   box-sizing: border-box;
 }
 .fondo{
-  background-image: url('../../img/formbackground.jpg');
+  position:fixed;
+z-index: -1;
+width: 100%;
+height: 100%;
+margin:0;
+padding:0;
 }
 .createf{
     max-width: 500px;
@@ -28,6 +33,7 @@
       
   .datacontainer{
     width: 100%;
+   border-bottom: 7px solid #383341;
    background:#383341 ;
    color: #ffffff;
    padding: 0 1.5rem;
@@ -121,16 +127,35 @@ border: 2px;
 }
 
 .telede{
-  
-  margin-left: 10px;
-  padding: 3px;
-  padding-bottom: -3px;
+display:flex;
+height: 40px;
+border: 3px solid #383341;
+background-color:#5A7DA2 ;
+padding: 3px;
+padding-bottom: -3px;
+}
+
+
+
+
+.telede button{
+  display: flex;
+  align-items: flex-end;
+  background: transparent;
+  margin-top: -9px;
+  margin-bottom:5px;
+  border: none;
+  color:red;
+  height: 30%;
 }
 .telede button:hover{
-  color: red;
+  cursor:pointer;
+  background: transparent;
 }
 .telede p{
+  margin-top:-5px;
+ color: #ffffff;
   border-radius: 2px white;
-
 }
+
 

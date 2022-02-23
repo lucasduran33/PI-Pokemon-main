@@ -4,7 +4,7 @@ import { Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import { postPokemon, getType } from '../../redux/action/index';
 import './CreatePokemon.css'
-
+import image from '../../img/formbackground.jpg'
 function validarNumero(parametro){
     if(!/^[0-9]*$/.test(parametro)){
         return false
@@ -195,7 +195,10 @@ const disableSubmit = useMemo(() =>{
 },[input]);
 
 return (
-    <div className='fondo'>
+    <div>
+        <div>
+            <img  className='fondo' src={image} alt='notfound' />
+        </div>
       
     <div>
         <Link to='/home'>
